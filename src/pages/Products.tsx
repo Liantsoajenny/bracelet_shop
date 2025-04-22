@@ -14,7 +14,7 @@ const Products: React.FC = () => {
   const [category, setCategory] = useState<string>(initialCategory);
   const [featured, setFeatured] = useState<boolean>(initialFeatured);
   const [sortBy, setSortBy] = useState<string>('default');
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 200]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([1000, 200000]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   
   const filteredProducts = products.filter(product => {
@@ -62,7 +62,7 @@ const Products: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           {/* Mobile Filters Toggle */}
           <div className="w-full md:hidden flex justify-between items-center mb-4">
-            <h1 className="font-heading text-2xl font-bold">Products</h1>
+            <h1 className="font-heading text-2xl font-bold">Produits</h1>
             <Button 
               variant="outline" 
               size="sm" 
@@ -77,7 +77,7 @@ const Products: React.FC = () => {
           {/* Filters - Desktop */}
           <div className="hidden md:block w-64 bg-white p-6 rounded-lg shadow-sm sticky top-28">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="font-heading font-semibold text-lg">Filters</h2>
+              <h2 className="font-heading font-semibold text-lg">Filtre</h2>
               <button 
                 onClick={clearFilters}
                 className="text-sm text-primary-600 hover:text-primary-700 flex items-center"
@@ -98,7 +98,7 @@ const Products: React.FC = () => {
                     onChange={() => setCategory('all')}
                     className="h-4 w-4 text-primary-600 focus:ring-primary-500"
                   />
-                  <span className="ml-2 text-gray-700">All Products</span>
+                  <span className="ml-2 text-gray-700">Toutes les produits</span>
                 </label>
                 <label className="flex items-center cursor-pointer">
                   <input 
@@ -108,7 +108,7 @@ const Products: React.FC = () => {
                     onChange={() => setCategory('bracelet')}
                     className="h-4 w-4 text-primary-600 focus:ring-primary-500"
                   />
-                  <span className="ml-2 text-gray-700">Brazilian Bracelets</span>
+                  <span className="ml-2 text-gray-700"> Bracelets</span>
                 </label>
                 <label className="flex items-center cursor-pointer">
                   <input 
@@ -118,18 +118,18 @@ const Products: React.FC = () => {
                     onChange={() => setCategory('art')}
                     className="h-4 w-4 text-primary-600 focus:ring-primary-500"
                   />
-                  <span className="ml-2 text-gray-700">Malagasy Arts</span>
+                  <span className="ml-2 text-gray-700"> Art Malagasy</span>
                 </label>
               </div>
             </div>
             
             <div className="mb-6">
-              <h3 className="font-medium mb-3">Price Range</h3>
+              <h3 className="font-medium mb-3">Prix</h3>
               <div className="px-2">
                 <input
                   type="range"
-                  min="0"
-                  max="200"
+                  min="1000"
+                  max="200000"
                   step="10"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
@@ -142,18 +142,7 @@ const Products: React.FC = () => {
               </div>
             </div>
             
-            <div className="mb-6">
-              <h3 className="font-medium mb-3">Other</h3>
-              <label className="flex items-center cursor-pointer">
-                <input 
-                  type="checkbox" 
-                  checked={featured} 
-                  onChange={() => setFeatured(!featured)}
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 rounded"
-                />
-                <span className="ml-2 text-gray-700">Featured Items Only</span>
-              </label>
-            </div>
+           
           </div>
           
           {/* Filters - Mobile */}
@@ -178,7 +167,7 @@ const Products: React.FC = () => {
                         </div>
                         
                         <div className="mb-6">
-                          <h3 className="font-medium mb-3">Category</h3>
+                          <h3 className="font-medium mb-3">Categorie</h3>
                           <div className="space-y-2">
                             <label className="flex items-center cursor-pointer">
                               <input 
@@ -188,7 +177,7 @@ const Products: React.FC = () => {
                                 onChange={() => setCategory('all')}
                                 className="h-4 w-4 text-primary-600 focus:ring-primary-500"
                               />
-                              <span className="ml-2 text-gray-700">All Products</span>
+                              <span className="ml-2 text-gray-700">Toute les produits</span>
                             </label>
                             <label className="flex items-center cursor-pointer">
                               <input 
@@ -198,7 +187,7 @@ const Products: React.FC = () => {
                                 onChange={() => setCategory('bracelet')}
                                 className="h-4 w-4 text-primary-600 focus:ring-primary-500"
                               />
-                              <span className="ml-2 text-gray-700">Brazilian Bracelets</span>
+                              <span className="ml-2 text-gray-700"> Bracelets</span>
                             </label>
                             <label className="flex items-center cursor-pointer">
                               <input 
@@ -208,18 +197,18 @@ const Products: React.FC = () => {
                                 onChange={() => setCategory('art')}
                                 className="h-4 w-4 text-primary-600 focus:ring-primary-500"
                               />
-                              <span className="ml-2 text-gray-700">Malagasy Arts</span>
+                              <span className="ml-2 text-gray-700"> Arts Malagasy</span>
                             </label>
                           </div>
                         </div>
                         
                         <div className="mb-6">
-                          <h3 className="font-medium mb-3">Price Range</h3>
+                          <h3 className="font-medium mb-3">Prix</h3>
                           <div className="px-2">
                             <input
                               type="range"
-                              min="0"
-                              max="200"
+                              min="1000"
+                              max="200000"
                               step="10"
                               value={priceRange[1]}
                               onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}

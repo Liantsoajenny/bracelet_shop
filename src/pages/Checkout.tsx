@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CreditCard, Check } from 'lucide-react';
+import { ArrowLeft, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import Button from '../components/ui/Button';
 import CartItem from '../components/cart/CartItem';
@@ -12,12 +12,7 @@ interface FormData {
   address: string;
   city: string;
   country: string;
-  postalCode: string;
   phone: string;
-  cardName: string;
-  cardNumber: string;
-  cardExpiry: string;
-  cardCvc: string;
 }
 
 const Checkout: React.FC = () => {
@@ -33,12 +28,7 @@ const Checkout: React.FC = () => {
     address: '',
     city: '',
     country: '',
-    postalCode: '',
     phone: '',
-    cardName: '',
-    cardNumber: '',
-    cardExpiry: '',
-    cardCvc: '',
   });
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,7 +83,7 @@ const Checkout: React.FC = () => {
           </p>
           <Link to="/">
             <Button variant="primary">
-              Back to Home
+              retour à l'accueil
             </Button>
           </Link>
         </div>
@@ -108,7 +98,7 @@ const Checkout: React.FC = () => {
         <div className="mb-6">
           <Link to="/cart" className="text-primary-600 hover:text-primary-700 flex items-center">
             <ArrowLeft size={16} className="mr-1" />
-            Back to cart
+            retour
           </Link>
         </div>
         
@@ -118,7 +108,7 @@ const Checkout: React.FC = () => {
           {/* Order Summary */}
           <div className="lg:col-span-1 order-2 lg:order-2">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="font-heading text-xl font-semibold mb-4">Order Summary</h2>
+              <h2 className="font-heading text-xl font-semibold mb-4">Commande</h2>
               
               <div className="border-t border-b border-gray-200 py-4 mb-4">
                 {cartItems.map(item => (
@@ -128,20 +118,12 @@ const Checkout: React.FC = () => {
               
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span>Subtotal</span>
-                  <span>${getCartTotal().toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Shipping</span>
-                  <span>$5.00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Tax</span>
-                  <span>${(getCartTotal() * 0.05).toFixed(2)}</span>
+                  <span>Prix</span>
+                  <span>Ar{getCartTotal()}</span>
                 </div>
                 <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-200 mt-2">
                   <span>Total</span>
-                  <span>${(getCartTotal() + 5 + (getCartTotal() * 0.05)).toFixed(2)}</span>
+                  <span>${getCartTotal()}</span>
                 </div>
               </div>
             </div>
@@ -153,12 +135,12 @@ const Checkout: React.FC = () => {
               <form onSubmit={handleSubmit}>
                 {/* Shipping Information */}
                 <div className="mb-8">
-                  <h2 className="font-heading text-xl font-semibold mb-4">Shipping Information</h2>
+                  <h2 className="font-heading text-xl font-semibold mb-4"> Information Pour la Livraison</h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                        First Name*
+                        Nom*
                       </label>
                       <input
                         type="text"
@@ -173,7 +155,7 @@ const Checkout: React.FC = () => {
                     
                     <div>
                       <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                        Last Name*
+                        Prenom*
                       </label>
                       <input
                         type="text"
@@ -233,7 +215,7 @@ const Checkout: React.FC = () => {
                     
                     <div>
                       <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
-                        City*
+                        Ville*
                       </label>
                       <input
                         type="text"
@@ -245,25 +227,11 @@ const Checkout: React.FC = () => {
                         required
                       />
                     </div>
-                    
-                    <div>
-                      <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-1">
-                        Postal Code*
-                      </label>
-                      <input
-                        type="text"
-                        id="postalCode"
-                        name="postalCode"
-                        value={formData.postalCode}
-                        onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary-500"
-                        required
-                      />
-                    </div>
+                  
                     
                     <div>
                       <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
-                        Country*
+                        Pays*
                       </label>
                       <input
                         type="text"
@@ -271,81 +239,6 @@ const Checkout: React.FC = () => {
                         name="country"
                         value={formData.country}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary-500"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Payment Information */}
-                <div className="mb-8">
-                  <h2 className="font-heading text-xl font-semibold mb-4">Payment Information</h2>
-                  
-                  <div className="flex items-center mb-4">
-                    <CreditCard size={20} className="text-gray-500 mr-2" />
-                    <span className="text-sm text-gray-500">Secure payment via credit card</span>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="md:col-span-2">
-                      <label htmlFor="cardName" className="block text-sm font-medium text-gray-700 mb-1">
-                        Name on Card*
-                      </label>
-                      <input
-                        type="text"
-                        id="cardName"
-                        name="cardName"
-                        value={formData.cardName}
-                        onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary-500"
-                        required
-                      />
-                    </div>
-                    
-                    <div className="md:col-span-2">
-                      <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">
-                        Card Number*
-                      </label>
-                      <input
-                        type="text"
-                        id="cardNumber"
-                        name="cardNumber"
-                        value={formData.cardNumber}
-                        onChange={handleChange}
-                        placeholder="XXXX XXXX XXXX XXXX"
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary-500"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="cardExpiry" className="block text-sm font-medium text-gray-700 mb-1">
-                        Expiry Date*
-                      </label>
-                      <input
-                        type="text"
-                        id="cardExpiry"
-                        name="cardExpiry"
-                        value={formData.cardExpiry}
-                        onChange={handleChange}
-                        placeholder="MM/YY"
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary-500"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="cardCvc" className="block text-sm font-medium text-gray-700 mb-1">
-                        Security Code (CVC)*
-                      </label>
-                      <input
-                        type="text"
-                        id="cardCvc"
-                        name="cardCvc"
-                        value={formData.cardCvc}
-                        onChange={handleChange}
-                        placeholder="CVC"
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary-500"
                         required
                       />

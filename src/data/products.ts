@@ -11,7 +11,7 @@ export const products: Product[] = [
     price:0.89,
     description: "Made in Mada",
     imageUrl: modele1,
-    featured: false,
+    featured: true,
     available: true
   },
   {
@@ -21,7 +21,7 @@ export const products: Product[] = [
     price: 1.19,
     description: "Made in Mada",
     imageUrl: modele2,
-    featured: false,
+    featured: true,
     available: true
   },
   

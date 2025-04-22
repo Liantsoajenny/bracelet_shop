@@ -23,7 +23,7 @@ const ProductDetail: React.FC = () => {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
+          <h1 className="text-2xl font-bold mb-4">Produit non trouvée</h1>
           <p className="mb-6">The product you're looking for doesn't exist or has been removed.</p>
           <Link to="/products">
             <Button variant="primary">
@@ -104,7 +104,7 @@ const ProductDetail: React.FC = () => {
               </p>
               
               <div className="mb-8">
-                <h3 className="font-medium mb-2">Quantity</h3>
+                <h3 className="font-medium mb-2">Quantité</h3>
                 <div className="flex items-center">
                   <button
                     onClick={handleDecreaseQuantity}
@@ -132,11 +132,11 @@ const ProductDetail: React.FC = () => {
                   disabled={isAddedToCart}
                 >
                   {isAddedToCart ? (
-                    "Added to Cart!"
+                    "Ajout au Panier!"
                   ) : (
                     <>
                       <ShoppingBag size={18} className="mr-2" />
-                      Add to Cart
+                      Ajout au panier
                     </>
                   )}
                 </Button>
