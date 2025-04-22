@@ -34,7 +34,7 @@ const Header: React.FC = () => {
           </h1>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Navigation Desktop */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link 
             to="/" 
@@ -42,7 +42,7 @@ const Header: React.FC = () => {
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}
           >
-            Home
+            Accueil
           </Link>
           <Link 
             to="/products" 
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}
           >
-            Shop
+            Boutique
           </Link>
           <Link 
             to="/about" 
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}
           >
-            About
+            À propos
           </Link>
           <Link 
             to="/contact" 
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
             )}
           </Link>
 
-          {/* Mobile Menu Button */}
+          {/* Bouton Menu Mobile */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`ml-4 p-2 rounded-full md:hidden ${
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menu Mobile */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg animate-fade-in">
           <div className="container mx-auto px-4 py-3">
@@ -107,21 +107,21 @@ const Header: React.FC = () => {
                 className="font-medium text-gray-700 py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Home
+                Accueil
               </Link>
               <Link 
                 to="/products" 
                 className="font-medium text-gray-700 py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Shop
+                Boutique
               </Link>
               <Link 
                 to="/about" 
                 className="font-medium text-gray-700 py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                About
+                À propos
               </Link>
               <Link 
                 to="/contact" 

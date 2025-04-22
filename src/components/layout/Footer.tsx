@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1">
             <h2 className="font-heading font-bold text-xl mb-4">Malagasy Learning.co</h2>
             <p className="mb-4">
-              Bringing the beauty of Malagasy arts  to the world, 
-              direct from Madagascar.
+              Faire rayonner la beauté des arts malgaches dans le monde entier, 
+              directement depuis Madagascar.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-rose-100">
@@ -28,48 +28,47 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="col-span-1">
-            <h3 className="font-heading font-semibold text-lg mb-4">Shop</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4">Boutique</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/products?category=bracelet" className="text-rose-100">
-                  Bracelet
+                  Bracelets
                 </Link>
               </li>
               <li>
                 <Link to="/products?category=art" className="text-rose-100">
-                   Art Malagasy
+                  Art malgache
                 </Link>
               </li>
               <li>
                 <Link to="/products?featured=true" className="text-rose-100">
-                  Featured Items
+                  Articles en vedette
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-rose-100">
-                  All Products
+                  Tous les produits
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className="col-span-1">
-            <h3 className="font-heading font-semibold text-lg mb-4">Help</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4">Aide</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/shipping" className="text-rose-100">
-                  Shipping & Returns
+                  Livraison & Retours
                 </Link>
               </li>
-             
               <li>
                 <Link to="/contact" className="text-rose-100">
-                  Contact Us
+                  Contactez-nous
                 </Link>
               </li>
               <li>
                 <Link to="/privacy" className="text-rose-100">
-                  Privacy Policy
+                  Politique de confidentialité
                 </Link>
               </li>
             </ul>
@@ -79,14 +78,14 @@ const Footer: React.FC = () => {
             <h3 className="font-heading font-semibold text-lg mb-4">Contact</h3>
             <address className="not-italic">
               <p>Madagascar, 301</p>
-              <p className="mt-2">Email: malagasylearning@gmail.com</p>
-              <p>Phone: +261 34 66 758 40</p>
+              <p className="mt-2">Email : malagasylearning@gmail.com</p>
+              <p>Téléphone : +261 34 66 758 40</p>
             </address>
           </div>
         </div>
 
         <div className="border-t border-rose-800 mt-8 pt-8 text-sm text-rose-300 text-center">
-          <p>&copy; {new Date().getFullYear()} Malagasy learning. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Malagasy Learning. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

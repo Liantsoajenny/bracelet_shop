@@ -45,7 +45,7 @@ const Products: React.FC = () => {
     if (category !== 'all') params.set('category', category);
     if (featured) params.set('featured', 'true');
     
-    const newUrl = `${location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+    const newUrl = `Ar{location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
     window.history.replaceState({}, '', newUrl);
   }, [category, featured, location.pathname]);
   
@@ -53,7 +53,7 @@ const Products: React.FC = () => {
     setCategory('all');
     setFeatured(false);
     setSortBy('default');
-    setPriceRange([0, 200]);
+    setPriceRange([1000, 200000]);
   };
   
   return (
@@ -70,7 +70,7 @@ const Products: React.FC = () => {
               className="flex items-center gap-2"
             >
               <Filter size={16} />
-              Filters
+              Filtre
             </Button>
           </div>
           
@@ -136,8 +136,8 @@ const Products: React.FC = () => {
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between mt-2 text-sm text-gray-600">
-                  <span>${priceRange[0]}</span>
-                  <span>${priceRange[1]}</span>
+                  <span>Ar{priceRange[0]}</span>
+                  <span>Ar{priceRange[1]}</span>
                 </div>
               </div>
             </div>
@@ -215,14 +215,14 @@ const Products: React.FC = () => {
                               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                             />
                             <div className="flex justify-between mt-2 text-sm text-gray-600">
-                              <span>${priceRange[0]}</span>
-                              <span>${priceRange[1]}</span>
+                              <span>Ar{priceRange[0]}</span>
+                              <span>Ar{priceRange[1]}</span>
                             </div>
                           </div>
                         </div>
                         
                         <div className="mb-6">
-                          <h3 className="font-medium mb-3">Other</h3>
+                          <h3 className="font-medium mb-3">Autre</h3>
                           <label className="flex items-center cursor-pointer">
                             <input 
                               type="checkbox" 
@@ -230,24 +230,26 @@ const Products: React.FC = () => {
                               onChange={() => setFeatured(!featured)}
                               className="h-4 w-4 text-primary-600 focus:ring-primary-500 rounded"
                             />
-                            <span className="ml-2 text-gray-700">Featured Items Only</span>
+                           <span className="ml-2 text-gray-700">Articles en vedette uniquement</span>
+
                           </label>
                         </div>
                         
                         <div className="mt-4 flex space-x-3">
-                          <Button 
-                            variant="primary" 
-                            fullWidth 
-                            onClick={() => setMobileFiltersOpen(false)}
-                          >
-                            Apply Filters
-                          </Button>
-                          <Button 
-                            variant="outline" 
-                            onClick={clearFilters}
-                          >
-                            Clear All
-                          </Button>
+                        <Button 
+  variant="primary" 
+  fullWidth 
+  onClick={() => setMobileFiltersOpen(false)}
+>
+  Appliquer les filtres
+</Button>
+<Button 
+  variant="outline" 
+  onClick={clearFilters}
+>
+  Tout réinitialiser
+</Button>
+
                         </div>
                       </div>
                     </div>
@@ -260,45 +262,47 @@ const Products: React.FC = () => {
           {/* Products Section */}
           <div className="flex-1">
             <div className="hidden md:flex justify-between items-center mb-6">
-              <h1 className="font-heading text-2xl font-bold">Products</h1>
+              <h1 className="font-heading text-2xl font-bold">Produits</h1>
               
               <div className="flex items-center">
-                <span className="text-sm text-gray-500 mr-2">Sort by:</span>
+                <span className="text-sm text-gray-500 mr-2">Trier par:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary-500"
                 >
-                  <option value="default">Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="name-asc">Name: A to Z</option>
-                  <option value="name-desc">Name: Z to A</option>
+                  <option value="default">En vedette</option>
+    <option value="price-low">Prix : du plus bas au plus élevé</option>
+    <option value="price-high">Prix : du plus élevé au plus bas</option>
+    <option value="name-asc">Nom : A à Z</option>
+    <option value="name-desc">Nom : Z à A</option>
                 </select>
               </div>
             </div>
             
             {/* Mobile Sort */}
             <div className="flex md:hidden justify-between items-center mb-6">
-              <span className="text-sm text-gray-500">Sort by:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary-500"
-              >
-                <option value="default">Featured</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="name-asc">Name: A to Z</option>
-                <option value="name-desc">Name: Z to A</option>
-              </select>
-            </div>
+  <span className="text-sm text-gray-500">Trier par :</span>
+  <select
+    value={sortBy}
+    onChange={(e) => setSortBy(e.target.value)}
+    className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary-500"
+  >
+    <option value="default">En vedette</option>
+    <option value="price-low">Prix : du plus bas au plus élevé</option>
+    <option value="price-high">Prix : du plus élevé au plus bas</option>
+    <option value="name-asc">Nom : A à Z</option>
+    <option value="name-desc">Nom : Z à A</option>
+  </select>
+</div>
+
             
             {sortedProducts.length === 0 ? (
-              <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-                <p className="text-gray-500 mb-4">No products found matching your criteria</p>
-                <Button variant="primary" onClick={clearFilters}>Clear Filters</Button>
-              </div>
+             <div className="text-center py-12 bg-white rounded-lg shadow-sm">
+             <p className="text-gray-500 mb-4">Aucun produit trouvé correspondant à vos critères</p>
+             <Button variant="primary" onClick={clearFilters}>Réinitialiser les filtres</Button>
+           </div>
+           
             ) : (
               <>
                 <p className="text-gray-500 mb-4">{sortedProducts.length} products found</p>
