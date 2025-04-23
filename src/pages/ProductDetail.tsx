@@ -24,10 +24,10 @@ const ProductDetail: React.FC = () => {
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Produit non trouvée</h1>
-          <p className="mb-6">The product you're looking for doesn't exist or has been removed.</p>
+          <p className="mb-6">Le produit que vous essai de chercher n'existe plus ou effacer </p>
           <Link to="/products">
             <Button variant="primary">
-              View All Products
+              Voir tout les produits
             </Button>
           </Link>
         </div>
@@ -66,7 +66,7 @@ const ProductDetail: React.FC = () => {
         <div className="mb-6">
           <Link to="/products" className="text-primary-600 hover:text-primary-700 flex items-center">
             <ArrowLeft size={16} className="mr-1" />
-            Back to products
+            Retourner au produits
           </Link>
         </div>
         
@@ -82,7 +82,7 @@ const ProductDetail: React.FC = () => {
               />
               {product.featured && (
                 <div className="absolute top-4 left-4 bg-accent-500 text-white text-sm font-bold px-3 py-1 rounded">
-                  Featured
+                  Mis en avant
                 </div>
               )}
             </div>
@@ -96,7 +96,7 @@ const ProductDetail: React.FC = () => {
               <h1 className="font-heading text-3xl font-bold mb-2">{product.name}</h1>
               
               <div className="mb-6">
-                <span className="text-2xl font-semibold text-primary-600">${product.price.toFixed(2)}</span>
+                <span className="text-2xl font-semibold text-primary-600">Ar{product.price.toFixed(2)}</span>
               </div>
               
               <p className="text-gray-700 mb-8">
@@ -147,7 +147,7 @@ const ProductDetail: React.FC = () => {
                   className="flex items-center justify-center"
                 >
                   <Heart size={18} className="mr-2" />
-                  Add to Wishlist
+                  j'adore
                 </Button>
               </div>
               
@@ -179,26 +179,26 @@ const ProductDetail: React.FC = () => {
         
         {/* Product Specifications, if we want to add more details */}
         <div className="mt-12">
-          <h2 className="font-heading text-2xl font-bold mb-6">Product Details</h2>
+          <h2 className="font-heading text-2xl font-bold mb-6">Details du produit</h2>
           
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="font-medium text-lg mb-4">Description</h3>
                 <p className="text-gray-700">
-                  {product.description} Our products are carefully handcrafted by skilled artisans, ensuring each item is unique and of the highest quality. We source all materials ethically and sustainably.
+                  {product.description} Nos produits sont fabriqués à la main avec soin .
                 </p>
               </div>
               
               <div>
-                <h3 className="font-medium text-lg mb-4">Product Information</h3>
+                <h3 className="font-medium text-lg mb-4"> Information du Produit</h3>
                 <ul className="space-y-2">
                   <li className="flex">
-                    <span className="w-32 font-medium text-gray-500">Category:</span>
+                    <span className="w-32 font-medium text-gray-500">Categorie:</span>
                     <span className="text-gray-700 capitalize">{product.category}</span>
                   </li>
                   <li className="flex">
-                    <span className="w-32 font-medium text-gray-500">Material:</span>
+                    <span className="w-32 font-medium text-gray-500">Materiel:</span>
                     <span className="text-gray-700">
                       {product.category === 'bracelet' ? 'Cotton threads, beads' : 'Wood, canvas, natural materials'}
                     </span>
@@ -211,7 +211,7 @@ const ProductDetail: React.FC = () => {
                   </li>
                   <li className="flex">
                     <span className="w-32 font-medium text-gray-500">Handmade:</span>
-                    <span className="text-gray-700">Yes</span>
+                    <span className="text-gray-700">oui</span>
                   </li>
                 </ul>
               </div>
@@ -222,7 +222,7 @@ const ProductDetail: React.FC = () => {
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-16">
-            <h2 className="font-heading text-2xl font-bold mb-6">You Might Also Like</h2>
+            <h2 className="font-heading text-2xl font-bold mb-6">Vous pourriez aussi aimer</h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map(relatedProduct => (
