@@ -32,10 +32,10 @@ const Checkout: React.FC = () => {
 
     emailjs
       .send(
-        'service_abc123',        // Remplace par ton service ID
-        'template_xyz789',       // Remplace par ton template ID
+        'service_h0gali8',        // Remplace par ton service ID
+        'template_evnyz5i',       // Remplace par ton template ID
         templateParams,
-        'U4D_yourPublicKey'      // Remplace par ta clé publique
+        '62CGM-1BlLeulsG4s'      // Remplace par ta clé publique
       )
       .then(() => {
         clearCart();
