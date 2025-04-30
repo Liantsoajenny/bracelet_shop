@@ -23,26 +23,48 @@ const Checkout: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Formulaire soumis');
+    console.log('Données du formulaire:', formData);
+    console.log('Articles du panier:', cartItems);
 
     const templateParams = {
       ...formData,
-      cart: cartItems.map(item => `${item.product.name} x${item.quantity}`).join(', '),
-      total: `Ar${getCartTotal().toFixed(2)}`
+      cart: cartItems.map(item => `
+        Produit: ${item.product.name}
+        ID: ${item.product.id}
+        Quantité: ${item.quantity}
+        Prix unitaire: Ar${item.product.price.toFixed(2)}
+        Sous-total: Ar${(item.product.price * item.quantity).toFixed(2)}
+        -------------------------
+      `).join('\n'),
+      total: `Ar${getCartTotal().toFixed(2)}`,
+      customerInfo: `
+        Nom: ${formData.firstName} ${formData.lastName}
+        Email: ${formData.email}
+        Téléphone: ${formData.phone}
+        Adresse: ${formData.address}
+        Ville: ${formData.city}
+        Pays: ${formData.country}
+      `
     };
+
+    console.log('Paramètres du template:', templateParams);
 
     emailjs
       .send(
-        'service_h0gali8',        // Service ID
-        'template_evnyz5i',       // Template ID
+        'service_a23e0ok',        // Service ID
+        'template_q1qwpwf',       // Template ID
         templateParams,
         '62CGM-1BlLeulsG4s'      // Public Key
       )
-      .then(() => {
+      .then((response) => {
+        console.log('Email envoyé avec succès:', response);
         clearCart();
         setMessageSent(true);
       })
       .catch((error) => {
-        console.error('EmailJS Error:', error);
+        console.error('Erreur EmailJS:', error);
+        alert('Une erreur est survenue lors de l\'envoi de la commande. Veuillez réessayer.');
       });
   };
 
@@ -60,16 +82,71 @@ const Checkout: React.FC = () => {
       <h1 className="text-2xl font-bold mb-6">Finaliser la commande</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <input name="firstName" onChange={handleChange} required placeholder="Nom" className="input" />
-        <input name="lastName" onChange={handleChange} required placeholder="Prénom" className="input" />
-        <input name="email" onChange={handleChange} required placeholder="Email" type="email" className="input" />
-        <input name="phone" onChange={handleChange} required placeholder="Téléphone" className="input" />
-        <input name="address" onChange={handleChange} required placeholder="Adresse" className="input md:col-span-2" />
-        <input name="city" onChange={handleChange} required placeholder="Ville" className="input" />
-        <input name="country" onChange={handleChange} required placeholder="Pays" className="input" />
+        <input 
+          name="firstName" 
+          onChange={handleChange} 
+          required 
+          placeholder="Nom" 
+          className="input" 
+          value={formData.firstName}
+        />
+        <input 
+          name="lastName" 
+          onChange={handleChange} 
+          required 
+          placeholder="Prénom" 
+          className="input" 
+          value={formData.lastName}
+        />
+        <input 
+          name="email" 
+          onChange={handleChange} 
+          required 
+          placeholder="Email" 
+          type="email" 
+          className="input" 
+          value={formData.email}
+        />
+        <input 
+          name="phone" 
+          onChange={handleChange} 
+          required 
+          placeholder="Téléphone" 
+          className="input" 
+          value={formData.phone}
+        />
+        <input 
+          name="address" 
+          onChange={handleChange} 
+          required 
+          placeholder="Adresse" 
+          className="input md:col-span-2" 
+          value={formData.address}
+        />
+        <input 
+          name="city" 
+          onChange={handleChange} 
+          required 
+          placeholder="Ville" 
+          className="input" 
+          value={formData.city}
+        />
+        <input 
+          name="country" 
+          onChange={handleChange} 
+          required 
+          placeholder="Pays" 
+          className="input" 
+          value={formData.country}
+        />
       </div>
 
-      <Button variant="primary" fullWidth type="submit">
+      <Button 
+        variant="primary" 
+        fullWidth 
+        type="submit"
+        className="mt-4"
+      >
         Envoyer la commande
       </Button>
     </form>
