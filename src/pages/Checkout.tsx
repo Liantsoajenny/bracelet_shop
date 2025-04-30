@@ -27,15 +27,15 @@ const Checkout: React.FC = () => {
     const templateParams = {
       ...formData,
       cart: cartItems.map(item => `${item.product.name} x${item.quantity}`).join(', '),
-      total: getCartTotal()
+      total: `Ar${getCartTotal().toFixed(2)}`
     };
 
     emailjs
       .send(
-        'service_h0gali8',        // Remplace par ton service ID
-        'template_evnyz5i',       // Remplace par ton template ID
+        'service_h0gali8',        // Service ID
+        'template_evnyz5i',       // Template ID
         templateParams,
-        '62CGM-1BlLeulsG4s'      // Remplace par ta clé publique
+        '62CGM-1BlLeulsG4s'      // Public Key
       )
       .then(() => {
         clearCart();

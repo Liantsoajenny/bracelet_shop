@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.name}
             </h3>
             <span className="font-medium text-primary-600">
-              ${product.price.toFixed(2)}
+              Ar{product.price.toFixed(2)}
             </span>
           </div>
           
